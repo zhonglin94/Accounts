@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AccountsLibrary;
 
 namespace Accounts
 {
@@ -35,6 +36,23 @@ namespace Accounts
         private void DeleteButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void AddItem_Click(object sender, EventArgs e)
+        {
+            string name = NameTextBox.Text;
+            string note = NoteTextBox.Text;
+            string content = ContentTextBox.Text;
+            DateTime occuredTime = OccuredTimePicker.Value;
+
+        }
+        private Category reflectCategory(string category)
+        {
+            if(category.ToUpper() == "SPENDING")
+                return Category.Spending;
+            if (category.ToUpper() == "INCOME")
+                return Category.Income;
+            throw new ArgumentException("Invalid category {0}, it should be income or spending", category);
         }
     }
 }

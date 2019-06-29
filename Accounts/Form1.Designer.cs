@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Name = new System.Windows.Forms.Label();
-            this.Category = new System.Windows.Forms.Label();
-            this.Content = new System.Windows.Forms.Label();
-            this.Note = new System.Windows.Forms.Label();
-            this.OccuredTime = new System.Windows.Forms.Label();
+            this.NameLabel = new System.Windows.Forms.Label();
+            this.CategoryLabel = new System.Windows.Forms.Label();
+            this.ContentLabel = new System.Windows.Forms.Label();
+            this.NoteLabel = new System.Windows.Forms.Label();
+            this.OccuredTimeLabel = new System.Windows.Forms.Label();
             this.AddNewItemBox = new System.Windows.Forms.GroupBox();
             this.OccuredTimePicker = new System.Windows.Forms.DateTimePicker();
             this.CategoryListBox = new System.Windows.Forms.ListBox();
@@ -46,51 +46,51 @@
             this.AddNewItemBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // Name
+            // NameLabel
             // 
-            this.Name.AutoSize = true;
-            this.Name.Location = new System.Drawing.Point(22, 40);
-            this.Name.Name = "Name";
-            this.Name.Size = new System.Drawing.Size(35, 13);
-            this.Name.TabIndex = 0;
-            this.Name.Text = "Name";
+            this.NameLabel.AutoSize = true;
+            this.NameLabel.Location = new System.Drawing.Point(22, 40);
+            this.NameLabel.Name = "NameLabel";
+            this.NameLabel.Size = new System.Drawing.Size(35, 13);
+            this.NameLabel.TabIndex = 0;
+            this.NameLabel.Text = "Name";
             // 
-            // Category
+            // CategoryLabel
             // 
-            this.Category.AutoSize = true;
-            this.Category.Location = new System.Drawing.Point(22, 82);
-            this.Category.Name = "Category";
-            this.Category.Size = new System.Drawing.Size(49, 13);
-            this.Category.TabIndex = 1;
-            this.Category.Text = "Category";
-            this.Category.Click += new System.EventHandler(this.Category_Click);
+            this.CategoryLabel.AutoSize = true;
+            this.CategoryLabel.Location = new System.Drawing.Point(22, 82);
+            this.CategoryLabel.Name = "CategoryLabel";
+            this.CategoryLabel.Size = new System.Drawing.Size(49, 13);
+            this.CategoryLabel.TabIndex = 1;
+            this.CategoryLabel.Text = "Category";
+            this.CategoryLabel.Click += new System.EventHandler(this.Category_Click);
             // 
-            // Content
+            // ContentLabel
             // 
-            this.Content.AutoSize = true;
-            this.Content.Location = new System.Drawing.Point(22, 125);
-            this.Content.Name = "Content";
-            this.Content.Size = new System.Drawing.Size(44, 13);
-            this.Content.TabIndex = 2;
-            this.Content.Text = "Content";
+            this.ContentLabel.AutoSize = true;
+            this.ContentLabel.Location = new System.Drawing.Point(22, 125);
+            this.ContentLabel.Name = "ContentLabel";
+            this.ContentLabel.Size = new System.Drawing.Size(44, 13);
+            this.ContentLabel.TabIndex = 2;
+            this.ContentLabel.Text = "Content";
             // 
-            // Note
+            // NoteLabel
             // 
-            this.Note.AutoSize = true;
-            this.Note.Location = new System.Drawing.Point(22, 166);
-            this.Note.Name = "Note";
-            this.Note.Size = new System.Drawing.Size(30, 13);
-            this.Note.TabIndex = 3;
-            this.Note.Text = "Note";
+            this.NoteLabel.AutoSize = true;
+            this.NoteLabel.Location = new System.Drawing.Point(22, 166);
+            this.NoteLabel.Name = "NoteLabel";
+            this.NoteLabel.Size = new System.Drawing.Size(30, 13);
+            this.NoteLabel.TabIndex = 3;
+            this.NoteLabel.Text = "Note";
             // 
-            // OccuredTime
+            // OccuredTimeLabel
             // 
-            this.OccuredTime.AutoSize = true;
-            this.OccuredTime.Location = new System.Drawing.Point(22, 207);
-            this.OccuredTime.Name = "OccuredTime";
-            this.OccuredTime.Size = new System.Drawing.Size(71, 13);
-            this.OccuredTime.TabIndex = 4;
-            this.OccuredTime.Text = "OccuredTime";
+            this.OccuredTimeLabel.AutoSize = true;
+            this.OccuredTimeLabel.Location = new System.Drawing.Point(22, 207);
+            this.OccuredTimeLabel.Name = "OccuredTimeLabel";
+            this.OccuredTimeLabel.Size = new System.Drawing.Size(71, 13);
+            this.OccuredTimeLabel.TabIndex = 4;
+            this.OccuredTimeLabel.Text = "OccuredTime";
             // 
             // AddNewItemBox
             // 
@@ -99,11 +99,11 @@
             this.AddNewItemBox.Controls.Add(this.NoteTextBox);
             this.AddNewItemBox.Controls.Add(this.ContentTextBox);
             this.AddNewItemBox.Controls.Add(this.NameTextBox);
-            this.AddNewItemBox.Controls.Add(this.OccuredTime);
-            this.AddNewItemBox.Controls.Add(this.Name);
-            this.AddNewItemBox.Controls.Add(this.Note);
-            this.AddNewItemBox.Controls.Add(this.Category);
-            this.AddNewItemBox.Controls.Add(this.Content);
+            this.AddNewItemBox.Controls.Add(this.OccuredTimeLabel);
+            this.AddNewItemBox.Controls.Add(this.NameLabel);
+            this.AddNewItemBox.Controls.Add(this.NoteLabel);
+            this.AddNewItemBox.Controls.Add(this.CategoryLabel);
+            this.AddNewItemBox.Controls.Add(this.ContentLabel);
             this.AddNewItemBox.Location = new System.Drawing.Point(64, 60);
             this.AddNewItemBox.Name = "AddNewItemBox";
             this.AddNewItemBox.Size = new System.Drawing.Size(235, 234);
@@ -161,6 +161,7 @@
             this.AddItem.TabIndex = 6;
             this.AddItem.Text = "Add item";
             this.AddItem.UseVisualStyleBackColor = true;
+            this.AddItem.Click += new System.EventHandler(this.AddItem_Click);
             // 
             // LoadHistoryButton
             // 
@@ -199,7 +200,7 @@
             this.Controls.Add(this.LoadHistoryButton);
             this.Controls.Add(this.AddItem);
             this.Controls.Add(this.AddNewItemBox);
-            //this.Name = "Form1";
+            this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.AddNewItemBox.ResumeLayout(false);
@@ -210,11 +211,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Label Name;
-        private System.Windows.Forms.Label Category;
-        private System.Windows.Forms.Label Content;
-        private System.Windows.Forms.Label Note;
-        private System.Windows.Forms.Label OccuredTime;
+        private System.Windows.Forms.Label NameLabel;
+        private System.Windows.Forms.Label CategoryLabel;
+        private System.Windows.Forms.Label ContentLabel;
+        private System.Windows.Forms.Label NoteLabel;
+        private System.Windows.Forms.Label OccuredTimeLabel;
         private System.Windows.Forms.GroupBox AddNewItemBox;
         private System.Windows.Forms.TextBox NoteTextBox;
         private System.Windows.Forms.TextBox ContentTextBox;
