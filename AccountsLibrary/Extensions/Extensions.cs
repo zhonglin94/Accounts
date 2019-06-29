@@ -20,6 +20,25 @@ namespace AccountsLibrary.Extensions
                 return false;
             return true;
         }
+        public static bool ValidateUniqeName(this TextBox textBox)
+        {
+            Accounts account = DataAccessService.ReadAccountItems();
+            if(account != null)
+            {
+                foreach(Item item in account)
+                {
+                    if (item.Name.ToUpper() == textBox.Text.ToUpper())
+                        return false;
+                }
+            }
+            return true;
+        }
+        public static bool ValidatePositiveNumber(this TextBox textBox)
+        {
+            if (Convert.ToDouble(textBox.Text) <= 0)
+                return false;
+            return true;
+        }
 
         public static bool ValidateEmpty(this ComboBox textBox)
         {

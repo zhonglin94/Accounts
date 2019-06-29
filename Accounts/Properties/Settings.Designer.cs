@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Accounts.Properties
+namespace AccountsUI.Properties
 {
 
 

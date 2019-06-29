@@ -1,4 +1,4 @@
-﻿namespace Accounts
+﻿namespace AccountsUI
 {
     partial class Form1
     {
@@ -46,7 +46,6 @@
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.RequiredIndicator = new System.Windows.Forms.Label();
             this.AddItem = new System.Windows.Forms.Button();
-            this.LoadHistoryButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.HistoryListBox = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -168,6 +167,7 @@
             this.CurrencyComboBox.Size = new System.Drawing.Size(50, 21);
             this.CurrencyComboBox.TabIndex = 15;
             this.CurrencyComboBox.SelectedIndexChanged += new System.EventHandler(this.CurrencyComboBox_SelectedIndexChanged);
+            this.CurrencyComboBox.SelectedIndex = 0;
             // 
             // CategoryComboBox
             // 
@@ -180,7 +180,7 @@
             this.CategoryComboBox.Size = new System.Drawing.Size(119, 21);
             this.CategoryComboBox.TabIndex = 14;
             this.CategoryComboBox.SelectedIndexChanged += new System.EventHandler(this.CategoryComboBox_SelectedIndexChanged);
-            this.CategoryComboBox.Validated += new System.EventHandler(this.AddItem_Click);
+            this.CategoryComboBox.SelectedIndex = 0;
             // 
             // AmountTextBox
             // 
@@ -246,7 +246,7 @@
             // 
             // AddItem
             // 
-            this.AddItem.Location = new System.Drawing.Point(124, 367);
+            this.AddItem.Location = new System.Drawing.Point(284, 139);
             this.AddItem.Name = "AddItem";
             this.AddItem.Size = new System.Drawing.Size(75, 23);
             this.AddItem.TabIndex = 6;
@@ -254,18 +254,9 @@
             this.AddItem.UseVisualStyleBackColor = true;
             this.AddItem.Click += new System.EventHandler(this.AddItem_Click);
             // 
-            // LoadHistoryButton
-            // 
-            this.LoadHistoryButton.Location = new System.Drawing.Point(329, 367);
-            this.LoadHistoryButton.Name = "LoadHistoryButton";
-            this.LoadHistoryButton.Size = new System.Drawing.Size(75, 23);
-            this.LoadHistoryButton.TabIndex = 11;
-            this.LoadHistoryButton.Text = "Load history";
-            this.LoadHistoryButton.UseVisualStyleBackColor = true;
-            // 
             // DeleteButton
             // 
-            this.DeleteButton.Location = new System.Drawing.Point(448, 367);
+            this.DeleteButton.Location = new System.Drawing.Point(284, 185);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(75, 23);
             this.DeleteButton.TabIndex = 12;
@@ -276,7 +267,7 @@
             // HistoryListBox
             // 
             this.HistoryListBox.FormattingEnabled = true;
-            this.HistoryListBox.Location = new System.Drawing.Point(290, 49);
+            this.HistoryListBox.Location = new System.Drawing.Point(373, 49);
             this.HistoryListBox.Name = "HistoryListBox";
             this.HistoryListBox.Size = new System.Drawing.Size(274, 277);
             this.HistoryListBox.TabIndex = 13;
@@ -292,7 +283,7 @@
             this.groupBox1.Controls.Add(this.SelectedTimeLabel);
             this.groupBox1.Controls.Add(this.TotalRevenueLabel);
             this.groupBox1.Controls.Add(this.TotalExpendLabel);
-            this.groupBox1.Location = new System.Drawing.Point(585, 49);
+            this.groupBox1.Location = new System.Drawing.Point(671, 49);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(199, 285);
             this.groupBox1.TabIndex = 16;
@@ -382,11 +373,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(895, 382);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.HistoryListBox);
             this.Controls.Add(this.DeleteButton);
-            this.Controls.Add(this.LoadHistoryButton);
             this.Controls.Add(this.AddItem);
             this.Controls.Add(this.AddNewItemBox);
             this.Name = "Form1";
@@ -412,7 +402,6 @@
         private System.Windows.Forms.TextBox ContentTextBox;
         private System.Windows.Forms.TextBox NameTextBox;
         private System.Windows.Forms.Button AddItem;
-        private System.Windows.Forms.Button LoadHistoryButton;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.DateTimePicker OccuredTimePicker;
         private System.Windows.Forms.ListBox HistoryListBox;

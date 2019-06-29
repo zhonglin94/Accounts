@@ -10,13 +10,16 @@ using System.Windows.Forms;
 using AccountsLibrary;
 using AccountsLibrary.Extensions;
 
-namespace Accounts
+namespace AccountsUI
 {
     public partial class Form1 : Form
     {
         public Form1()
         {
             InitializeComponent();
+            Accounts account = DataAccessService.ReadAccountItems();
+            foreach (Item item in account)
+                HistoryListBox.Items.Add(item);
         }
 
         private void Category_Click(object sender, EventArgs e)
@@ -41,65 +44,64 @@ namespace Accounts
 
         private void AddItem_Click(object sender, EventArgs e)
         {
+            //Accounts account = DataAccessService.ReadAccountItems();
+            Accounts account = DataAccessService.ReadAccountItems();
+
             if (!ValidateUserInputs())
                 return;
+
             string name = NameTextBox.Text;
             string note = NoteTextBox.Text;
             string content = ContentTextBox.Text;
-            Category category = this.ReflectCategory(CategoryComboBox.Text);
+            Category category = Utils.ReflectCategory(CategoryComboBox.Text);
             double amount = Convert.ToDouble(AmountTextBox.Text);
-            Currency currency = this.ReflectCurrency(CurrencyComboBox.Text);
+            Currency currency = Utils.ReflectCurrency(CurrencyComboBox.Text);
             DateTime occuredTime = OccuredTimePicker.Value;
+
             Item item = new Item(name, category, amount, currency, occuredTime);
+            account.Add(item);
+            DataAccessService.SaveAccountItems(account);
+            foreach (Item aitem in account)
+                HistoryListBox.Items.Add(aitem);
 
         }
-        private Category ReflectCategory(string category)
-        {
-            if(category.ToUpper() == "SPENDING")
-                return Category.Spending;
-            return Category.Income;    
-        }
-        private Currency ReflectCurrency(string currency)
-        {
-            switch (currency.ToUpper())
-            {
-                case "RMB":
-                    return Currency.RMB;
-                case "USD":
-                    return Currency.USD;
-                case "EUR":
-                    return Currency.EUR;
-                default:
-                    return Currency.RMB;
-            }
-
-        }
-
+        
         private bool ValidateUserInputs()
         {
             int failedCount = 0;
             if (!NameTextBox.ValidateEmpty())
             {
                 NameTextBox.BackColor =Color.OrangeRed;
-                NameTextBox.Focus();
                 failedCount++;
             }
+            //if (!NameTextBox.ValidateUniqeName())
+            //{
+            //    MessageBox.Show("Fail to add as the name alread exists");
+            //    AmountTextBox.BackColor = Color.OrangeRed;
+            //    failedCount++;
+            //}
+
             if (!AmountTextBox.ValidateEmpty())
             {
                 AmountTextBox.BackColor =Color.OrangeRed;
-                AmountTextBox.Focus();
                 failedCount++;
             }
+
+            if (!AmountTextBox.ValidatePositiveNumber())
+            {
+                MessageBox.Show("The amount should be positive");
+                AmountTextBox.BackColor = Color.OrangeRed;
+                failedCount++;
+            }
+
             if (!CategoryComboBox.ValidateEmpty())
             {
                 CategoryComboBox.BackColor =Color.OrangeRed;
-                CategoryComboBox.Focus();
                 failedCount++;
             }
             if (!CurrencyComboBox.ValidateEmpty())
             {
                 CurrencyComboBox.BackColor =Color.OrangeRed;
-                CurrencyComboBox.Focus();
                 failedCount++;
             }
             if (!OccuredTimePicker.ValidateEmpty())

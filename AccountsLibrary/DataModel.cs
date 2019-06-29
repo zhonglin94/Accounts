@@ -8,15 +8,15 @@ namespace AccountsLibrary
 {
     public enum Category
     {
-        Spending,
-        Income
+        Spending=0,
+        Income =1
     }
 
     public enum Currency
     {
-        RMB,
-        USD,
-        EUR
+        RMB=0,
+        USD=1,
+        EUR=2
     }
 
     public class Money
@@ -79,63 +79,14 @@ namespace AccountsLibrary
 
         }
 
-        public class Item
-        {
-            protected string Name { get; set; }
-            public Category Category { get; set; }
-            protected string Content { get; set; }
-            protected string Note { get; set; }
-            public Money Money;
-            public DateTime OccuredTime;
-
-            private string categoryType
-            {
-                get => Category == Category.Spending ? "-" : "+";
-            }
-
-            // Constructor
-            public Item(string name, Category itemCategory, double amount) : this(name, itemCategory, amount, Currency.RMB, "None", "None", DateTime.Now) { }
-            public Item(string name, Category itemCategory, double amount, Currency currency) : this(name, itemCategory, amount, currency, "None", "None", DateTime.Now) { }
-            public Item(string name, Category itemCategory, double amount, Currency currency, string content) : this(name, itemCategory, amount, currency, content, "None", DateTime.Now) { }
-            public Item(string name, Category itemCategory, double amount, Currency currency, string content, string note) : this(name, itemCategory, amount, currency, content, note, DateTime.Now) { }
-            public Item(string name, Category itemCategory, double amount, DateTime occuredTime) : this(name, itemCategory, amount, Currency.RMB, "None", "None", occuredTime) { }
-            public Item(string name, Category itemCategory, double amount, Currency currency, DateTime occuredTime) : this(name, itemCategory, amount, currency, "None", "None", occuredTime) { }
-            public Item(string name, Category itemCategory, double amount, Currency currency, string content, string note, DateTime occuredTime)
-            {
-                if (name == "" && name == null)
-                {
-                    throw new ArgumentException("The input item name is not valid");
-                }
-                if (itemCategory != Category.Income && itemCategory != Category.Spending)
-                {
-                    throw new ArgumentException("The item category should be either spending or income");
-                }
-                if (amount == 0)
-                {
-                    throw new ArgumentException("The amount should not be zero");
-
-                }
-
-                this.Name = name;
-                this.Category = itemCategory;
-                this.Content = content;
-                this.Note = note;
-                this.Money = new Money(amount, currency);
-                this.OccuredTime = occuredTime;
-            }
-            public override string ToString()
-            {
-                return $"{Name} {categoryType}{Money.ToString()}: Content: {Content} | Note: {Note} | occuredTime: {OccuredTime.ToString("MMMM dd, yyyy")} ";
-            }
-        }
     }
 
     public class Item
     {
-        protected string Name { get; set; }
+        public  string Name { get; set; }
         public Category Category { get; set; }
-        protected string Content { get; set; }
-        protected string Note { get; set; }
+        public string Content { get; set; }
+        public string Note { get; set; }
         public Money Amount;
         public DateTime OccuredTime;
 
@@ -143,7 +94,10 @@ namespace AccountsLibrary
         {
             get => Category == Category.Spending ? "-" : "+";
         }
+        public Item()
+        {
 
+        }
         // Constructor
         public Item(string name, Category itemCategory, double amount) : this(name, itemCategory, amount, Currency.RMB, "None", "None", DateTime.Now) { }
         public Item(string name, Category itemCategory, double amount, Currency currency) : this(name, itemCategory, amount, currency, "None", "None", DateTime.Now) { }
@@ -154,18 +108,15 @@ namespace AccountsLibrary
         public Item(string name, Category itemCategory, double amount, Currency currency, string content, string note, DateTime occuredTime)
         {
             if (name == "" && name == null)
-            {
                 throw new ArgumentException("The input item name is not valid");
-            }
             if (itemCategory != Category.Income && itemCategory != Category.Spending)
-            {
                 throw new ArgumentException("The item category should be either spending or income");
-            }
             if (amount == 0)
-            {
                 throw new ArgumentException("The amount should not be zero");
-
-            }
+            //if (content == "None")
+            //    content = "N/A";
+            //if (note == "None")
+            //    note = "N/A";
 
             this.Name = name;
             this.Category = itemCategory;
@@ -177,6 +128,10 @@ namespace AccountsLibrary
         public override string ToString()
         {
             return $"{Name} {categoryType}{Amount.ToString()}: Content: {Content} | Note: {Note} | occuredTime: {OccuredTime.ToString("MMMM dd, yyyy")} ";
+        }
+        public string ToSaveString()
+        {
+            return $"{Name} {Category.ToString()} {Amount.Value} {Amount.Currency} {Content} {Note} {OccuredTime.Year} {OccuredTime.Month} {OccuredTime.Day}";
         }
 
         public bool IsSpending()
