@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountsUI", "Accounts\Acco
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountsLibrary", "AccountsLibrary\AccountsLibrary.csproj", "{7E6D287E-ED24-4E5F-8B8E-AC7B62391566}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Oven", "Oven", "{2F0A670C-DF7F-471D-B38A-D49CD06BC264}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oven", "Oven\Oven.csproj", "{24B65BE4-70C0-4F46-B88C-3905787CD8F3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +25,16 @@ Global
 		{7E6D287E-ED24-4E5F-8B8E-AC7B62391566}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E6D287E-ED24-4E5F-8B8E-AC7B62391566}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E6D287E-ED24-4E5F-8B8E-AC7B62391566}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24B65BE4-70C0-4F46-B88C-3905787CD8F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24B65BE4-70C0-4F46-B88C-3905787CD8F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24B65BE4-70C0-4F46-B88C-3905787CD8F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24B65BE4-70C0-4F46-B88C-3905787CD8F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{24B65BE4-70C0-4F46-B88C-3905787CD8F3} = {2F0A670C-DF7F-471D-B38A-D49CD06BC264}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1456F499-8B74-401B-AB8F-9DCAB6339EC6}
