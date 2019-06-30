@@ -5,3 +5,4 @@
 2. Add user input validation service to ensure correct input
 3. Add nunit test
 
+![Image text](https://github.com/zhonglin94/Accounts/blob/master/Images/User-Input-Validation.png)
