@@ -47,16 +47,52 @@ namespace AccountsLibrary
         }
         private static Item ParseItem(string row)
         {
+            string divider = "|";
+            int iter = 0;
+
             string[] elements = Regex.Split(row.Trim(), @"\s+");
-            string name = elements[0];
-            Category category = Utils.ReflectCategory(elements[1]);
-            double amount = Convert.ToDouble(elements[2]);
-            Currency currency = Utils.ReflectCurrency(elements[3]);
-            string content = elements[4];
-            string note = elements[5];
-            int year = Convert.ToInt32(elements[6]);
-            int month = Convert.ToInt32(elements[7]);
-            int day = Convert.ToInt32(elements[8]);
+
+            string name = "";
+            string categoryStr = "";
+            string amountStr = "";
+            string currencyStr = "";
+            string content = "";
+            string note = "";
+            string yearStr = "";
+            string monthStr = "";
+            string dayStr = "";
+            for (int i = 0; i <elements.Length; i++)
+            {
+                if (elements[i] == divider)
+                {
+                    iter++;
+                    i++;
+                }               
+                if(iter ==0)
+                    name += elements[i];
+                if (iter == 1)
+                    categoryStr += elements[i];
+                if (iter ==2)
+                    amountStr += elements[i];
+                if (iter == 3)
+                    currencyStr += elements[i];
+                if (iter == 4)
+                    note += (elements[i] + " ");
+                if (iter == 5)
+                    content += (elements[i] + " ");
+                if (iter == 6)
+                    yearStr += elements[i];
+                if (iter == 7)
+                    monthStr += elements[i];
+                if (iter == 8)
+                    dayStr += elements[i];
+            }
+            Category category = Utils.ReflectCategory(categoryStr);
+            double amount = Convert.ToDouble(amountStr);
+            Currency currency = Utils.ReflectCurrency(currencyStr);
+            int year = Convert.ToInt32(yearStr);
+            int month = Convert.ToInt32(monthStr);
+            int day = Convert.ToInt32(dayStr);
             DateTime occuredTime = new DateTime(year, month, day);
 
             return new Item(name, category, amount, currency, note, content, occuredTime);

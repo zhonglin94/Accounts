@@ -49,12 +49,12 @@
             this.DeleteButton = new System.Windows.Forms.Button();
             this.HistoryListBox = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.TotalExpendTextBox = new System.Windows.Forms.TextBox();
             this.CalculateButton = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TotalIncomeTextBox = new System.Windows.Forms.TextBox();
             this.TotalIncomeLabel = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.SelectedMonthTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.TotalRevenueTextBox = new System.Windows.Forms.TextBox();
             this.SelectedTimeLabel = new System.Windows.Forms.Label();
             this.TotalRevenueLabel = new System.Windows.Forms.Label();
             this.TotalExpendLabel = new System.Windows.Forms.Label();
@@ -79,7 +79,6 @@
             this.CategoryLabel.Size = new System.Drawing.Size(49, 13);
             this.CategoryLabel.TabIndex = 1;
             this.CategoryLabel.Text = "Category";
-            this.CategoryLabel.Click += new System.EventHandler(this.Category_Click);
             // 
             // ContentLabel
             // 
@@ -126,7 +125,7 @@
             this.AddNewItemBox.Controls.Add(this.CategoryLabel);
             this.AddNewItemBox.Controls.Add(this.ContentLabel);
             this.AddNewItemBox.Controls.Add(this.RequiredIndicator);
-            this.AddNewItemBox.Location = new System.Drawing.Point(23, 39);
+            this.AddNewItemBox.Location = new System.Drawing.Point(19, 39);
             this.AddNewItemBox.Name = "AddNewItemBox";
             this.AddNewItemBox.Size = new System.Drawing.Size(246, 285);
             this.AddNewItemBox.TabIndex = 5;
@@ -189,7 +188,6 @@
             this.AmountTextBox.Size = new System.Drawing.Size(63, 20);
             this.AmountTextBox.TabIndex = 11;
             this.AmountTextBox.TextChanged += new System.EventHandler(this.AmountTextBox_TextChanged_1);
-            this.AmountTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AmountTextBox_KeyPress);
             // 
             // AmountLabel
             // 
@@ -208,7 +206,6 @@
             this.OccuredTimePicker.Name = "OccuredTimePicker";
             this.OccuredTimePicker.Size = new System.Drawing.Size(119, 20);
             this.OccuredTimePicker.TabIndex = 9;
-            this.OccuredTimePicker.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // NoteTextBox
             // 
@@ -216,7 +213,6 @@
             this.NoteTextBox.Name = "NoteTextBox";
             this.NoteTextBox.Size = new System.Drawing.Size(118, 20);
             this.NoteTextBox.TabIndex = 7;
-            this.NoteTextBox.TextChanged += new System.EventHandler(this.NoteTextBox_TextChanged);
             // 
             // ContentTextBox
             // 
@@ -246,49 +242,58 @@
             // 
             // AddItem
             // 
-            this.AddItem.Location = new System.Drawing.Point(284, 139);
+            this.AddItem.Location = new System.Drawing.Point(278, 139);
             this.AddItem.Name = "AddItem";
-            this.AddItem.Size = new System.Drawing.Size(75, 23);
+            this.AddItem.Size = new System.Drawing.Size(53, 23);
             this.AddItem.TabIndex = 6;
-            this.AddItem.Text = "Add item";
+            this.AddItem.Text = "Add";
             this.AddItem.UseVisualStyleBackColor = true;
             this.AddItem.Click += new System.EventHandler(this.AddItem_Click);
             // 
             // DeleteButton
             // 
-            this.DeleteButton.Location = new System.Drawing.Point(284, 185);
+            this.DeleteButton.Location = new System.Drawing.Point(278, 185);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteButton.Size = new System.Drawing.Size(53, 23);
             this.DeleteButton.TabIndex = 12;
-            this.DeleteButton.Text = "Delete item";
+            this.DeleteButton.Text = "Delete";
             this.DeleteButton.UseVisualStyleBackColor = true;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // HistoryListBox
             // 
             this.HistoryListBox.FormattingEnabled = true;
-            this.HistoryListBox.Location = new System.Drawing.Point(373, 49);
+            this.HistoryListBox.HorizontalScrollbar = true;
+            this.HistoryListBox.Location = new System.Drawing.Point(343, 49);
             this.HistoryListBox.Name = "HistoryListBox";
-            this.HistoryListBox.Size = new System.Drawing.Size(274, 277);
+            this.HistoryListBox.ScrollAlwaysVisible = true;
+            this.HistoryListBox.Size = new System.Drawing.Size(322, 277);
             this.HistoryListBox.TabIndex = 13;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.TotalExpendTextBox);
             this.groupBox1.Controls.Add(this.CalculateButton);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.TotalIncomeTextBox);
             this.groupBox1.Controls.Add(this.TotalIncomeLabel);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.SelectedMonthTimePicker);
+            this.groupBox1.Controls.Add(this.TotalRevenueTextBox);
             this.groupBox1.Controls.Add(this.SelectedTimeLabel);
             this.groupBox1.Controls.Add(this.TotalRevenueLabel);
             this.groupBox1.Controls.Add(this.TotalExpendLabel);
-            this.groupBox1.Location = new System.Drawing.Point(671, 49);
+            this.groupBox1.Location = new System.Drawing.Point(682, 49);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(199, 285);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Analysis";
+            // 
+            // TotalExpendTextBox
+            // 
+            this.TotalExpendTextBox.Location = new System.Drawing.Point(100, 87);
+            this.TotalExpendTextBox.Name = "TotalExpendTextBox";
+            this.TotalExpendTextBox.Size = new System.Drawing.Size(79, 20);
+            this.TotalExpendTextBox.TabIndex = 18;
             // 
             // CalculateButton
             // 
@@ -298,76 +303,66 @@
             this.CalculateButton.TabIndex = 17;
             this.CalculateButton.Text = "Calculate";
             this.CalculateButton.UseVisualStyleBackColor = true;
+            this.CalculateButton.Click += new System.EventHandler(this.CalculateButton_Click);
             // 
-            // comboBox2
+            // TotalIncomeTextBox
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Income",
-            "Spending"});
-            this.comboBox2.Location = new System.Drawing.Point(99, 84);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(80, 21);
-            this.comboBox2.TabIndex = 14;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(99, 130);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(80, 20);
-            this.textBox1.TabIndex = 11;
+            this.TotalIncomeTextBox.Location = new System.Drawing.Point(99, 130);
+            this.TotalIncomeTextBox.Name = "TotalIncomeTextBox";
+            this.TotalIncomeTextBox.Size = new System.Drawing.Size(80, 20);
+            this.TotalIncomeTextBox.TabIndex = 11;
             // 
             // TotalIncomeLabel
             // 
             this.TotalIncomeLabel.AutoSize = true;
             this.TotalIncomeLabel.Location = new System.Drawing.Point(22, 133);
             this.TotalIncomeLabel.Name = "TotalIncomeLabel";
-            this.TotalIncomeLabel.Size = new System.Drawing.Size(66, 13);
+            this.TotalIncomeLabel.Size = new System.Drawing.Size(68, 13);
             this.TotalIncomeLabel.TabIndex = 10;
-            this.TotalIncomeLabel.Text = "TotalIncome";
+            this.TotalIncomeLabel.Text = "Total income";
             // 
-            // dateTimePicker1
+            // SelectedMonthTimePicker
             // 
-            this.dateTimePicker1.CustomFormat = "MM-yyyy";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(99, 174);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(80, 20);
-            this.dateTimePicker1.TabIndex = 9;
+            this.SelectedMonthTimePicker.CustomFormat = "MM-yyyy";
+            this.SelectedMonthTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.SelectedMonthTimePicker.Location = new System.Drawing.Point(99, 174);
+            this.SelectedMonthTimePicker.Name = "SelectedMonthTimePicker";
+            this.SelectedMonthTimePicker.Size = new System.Drawing.Size(80, 20);
+            this.SelectedMonthTimePicker.TabIndex = 9;
             // 
-            // textBox4
+            // TotalRevenueTextBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(100, 40);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(79, 20);
-            this.textBox4.TabIndex = 5;
+            this.TotalRevenueTextBox.Location = new System.Drawing.Point(100, 40);
+            this.TotalRevenueTextBox.Name = "TotalRevenueTextBox";
+            this.TotalRevenueTextBox.Size = new System.Drawing.Size(79, 20);
+            this.TotalRevenueTextBox.TabIndex = 5;
             // 
             // SelectedTimeLabel
             // 
             this.SelectedTimeLabel.AutoSize = true;
             this.SelectedTimeLabel.Location = new System.Drawing.Point(10, 177);
             this.SelectedTimeLabel.Name = "SelectedTimeLabel";
-            this.SelectedTimeLabel.Size = new System.Drawing.Size(78, 13);
+            this.SelectedTimeLabel.Size = new System.Drawing.Size(80, 13);
             this.SelectedTimeLabel.TabIndex = 4;
-            this.SelectedTimeLabel.Text = "OccuredMonth";
+            this.SelectedTimeLabel.Text = "Occured month";
             // 
             // TotalRevenueLabel
             // 
             this.TotalRevenueLabel.AutoSize = true;
             this.TotalRevenueLabel.Location = new System.Drawing.Point(22, 40);
             this.TotalRevenueLabel.Name = "TotalRevenueLabel";
-            this.TotalRevenueLabel.Size = new System.Drawing.Size(75, 13);
+            this.TotalRevenueLabel.Size = new System.Drawing.Size(73, 13);
             this.TotalRevenueLabel.TabIndex = 0;
-            this.TotalRevenueLabel.Text = "TotalRevenue";
+            this.TotalRevenueLabel.Text = "Total revenue";
             // 
             // TotalExpendLabel
             // 
             this.TotalExpendLabel.AutoSize = true;
             this.TotalExpendLabel.Location = new System.Drawing.Point(22, 87);
             this.TotalExpendLabel.Name = "TotalExpendLabel";
-            this.TotalExpendLabel.Size = new System.Drawing.Size(67, 13);
+            this.TotalExpendLabel.Size = new System.Drawing.Size(69, 13);
             this.TotalExpendLabel.TabIndex = 1;
-            this.TotalExpendLabel.Text = "TotalExpend";
+            this.TotalExpendLabel.Text = "Total expend";
             // 
             // Form1
             // 
@@ -410,11 +405,10 @@
         private System.Windows.Forms.ComboBox CurrencyComboBox;
         private System.Windows.Forms.ComboBox CategoryComboBox;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TotalIncomeTextBox;
         private System.Windows.Forms.Label TotalIncomeLabel;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.DateTimePicker SelectedMonthTimePicker;
+        private System.Windows.Forms.TextBox TotalRevenueTextBox;
         private System.Windows.Forms.Label SelectedTimeLabel;
         private System.Windows.Forms.Label TotalRevenueLabel;
         private System.Windows.Forms.Label TotalExpendLabel;
@@ -422,6 +416,7 @@
         private System.Windows.Forms.Label RequiredIndicator;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox TotalExpendTextBox;
     }
 }
 

@@ -35,7 +35,7 @@ namespace AccountsLibrary.Extensions
         }
         public static bool ValidatePositiveNumber(this TextBox textBox)
         {
-            if (Convert.ToDouble(textBox.Text) <= 0)
+            if (textBox.Text !="" && Convert.ToDouble(textBox.Text) <= 0)
                 return false;
             return true;
         }

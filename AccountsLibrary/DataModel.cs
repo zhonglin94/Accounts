@@ -113,10 +113,10 @@ namespace AccountsLibrary
                 throw new ArgumentException("The item category should be either spending or income");
             if (amount == 0)
                 throw new ArgumentException("The amount should not be zero");
-            //if (content == "None")
-            //    content = "N/A";
-            //if (note == "None")
-            //    note = "N/A";
+            if (content == "")
+                content = "None";
+            if (note == "")
+                note = "None";
 
             this.Name = name;
             this.Category = itemCategory;
@@ -127,11 +127,11 @@ namespace AccountsLibrary
         }
         public override string ToString()
         {
-            return $"{Name} {categoryType}{Amount.ToString()}: Content: {Content} | Note: {Note} | occuredTime: {OccuredTime.ToString("MMMM dd, yyyy")} ";
+            return $"{Name.ToUpper()} {categoryType}{Amount.ToString()}: CONTENT: {Content} | NOTE: {Note} | Time: {OccuredTime.ToString("MMMM dd, yyyy")} ";
         }
         public string ToSaveString()
         {
-            return $"{Name} {Category.ToString()} {Amount.Value} {Amount.Currency} {Content} {Note} {OccuredTime.Year} {OccuredTime.Month} {OccuredTime.Day}";
+            return $"{Name} | {Category.ToString()} | {Amount.Value} | {Amount.Currency} | {Content} | {Note} | {OccuredTime.Year} | {OccuredTime.Month} | {OccuredTime.Day} |";
         }
 
         public bool IsSpending()

@@ -14,42 +14,27 @@ namespace AccountsUI
 {
     public partial class Form1 : Form
     {
+        private Accounts account;
         public Form1()
         {
             InitializeComponent();
-            Accounts account = DataAccessService.ReadAccountItems();
+            account = DataAccessService.ReadAccountItems();
             foreach (Item item in account)
                 HistoryListBox.Items.Add(item);
         }
 
-        private void Category_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-
+            int selectedIndex = HistoryListBox.SelectedIndex;
+            account.Remove(selectedIndex);
+            HistoryListBox.Items.RemoveAt(selectedIndex);
+            DataAccessService.SaveAccountItems(account);
         }
 
         private void AddItem_Click(object sender, EventArgs e)
         {
-            //Accounts account = DataAccessService.ReadAccountItems();
-            Accounts account = DataAccessService.ReadAccountItems();
-
             if (!ValidateUserInputs())
                 return;
-
             string name = NameTextBox.Text;
             string note = NoteTextBox.Text;
             string content = ContentTextBox.Text;
@@ -58,14 +43,11 @@ namespace AccountsUI
             Currency currency = Utils.ReflectCurrency(CurrencyComboBox.Text);
             DateTime occuredTime = OccuredTimePicker.Value;
 
-            Item item = new Item(name, category, amount, currency, occuredTime);
+            Item item = new Item(name, category, amount, currency, content, note, occuredTime);
             account.Add(item);
             DataAccessService.SaveAccountItems(account);
-            foreach (Item aitem in account)
-                HistoryListBox.Items.Add(aitem);
-
+            HistoryListBox.Items.Add(item);
         }
-        
         private bool ValidateUserInputs()
         {
             int failedCount = 0;
@@ -74,12 +56,12 @@ namespace AccountsUI
                 NameTextBox.BackColor =Color.OrangeRed;
                 failedCount++;
             }
-            //if (!NameTextBox.ValidateUniqeName())
-            //{
-            //    MessageBox.Show("Fail to add as the name alread exists");
-            //    AmountTextBox.BackColor = Color.OrangeRed;
-            //    failedCount++;
-            //}
+            if (!NameTextBox.ValidateUniqeName())
+            {
+                MessageBox.Show("Fail to add as the name alread exists");
+                NameTextBox.BackColor = Color.OrangeRed;
+                failedCount++;
+            }
 
             if (!AmountTextBox.ValidateEmpty())
             {
@@ -117,15 +99,15 @@ namespace AccountsUI
         }
         
 
-        private void AmountTextBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-            if (AmountTextBox.ValidateEmpty())
-                AmountTextBox.BackColor = System.Drawing.Color.White;
-            if(!char.IsDigit(e.KeyChar))
-                MessageBox.Show("Only numeric number is supported ");
+        //private void AmountTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        //{
+        //    e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        //    if (AmountTextBox.ValidateEmpty())
+        //        AmountTextBox.BackColor = Color.White;
+        //    if(!char.IsDigit(e.KeyChar))
+        //        MessageBox.Show("Only numeric number is supported ");
             
-        }
+        //}
 
         private void AmountTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -133,12 +115,6 @@ namespace AccountsUI
                 AmountTextBox.BackColor = System.Drawing.Color.White;
 
         }
-
-        private void NoteTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void NameTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -159,9 +135,30 @@ namespace AccountsUI
                 CurrencyComboBox.BackColor = System.Drawing.Color.White;
 
         }
+    
+        private void CalculateButton_Click(object sender, EventArgs e)
+        {
+            TotalRevenueTextBox.Text = account.TotalRevenue(SelectedMonthTimePicker.Value).Value.ToString();
+            TotalExpendTextBox.Text = account.TotalExpenditure(SelectedMonthTimePicker.Value).Value.ToString();
+            TotalIncomeTextBox.Text =account.TotalIncome(SelectedMonthTimePicker.Value).Value.ToString();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
 
         private void AmountTextBox_TextChanged_1(object sender, EventArgs e)
         {
+            if (AmountTextBox.ValidateEmpty())
+                AmountTextBox.BackColor = Color.White;
+            if (!double.TryParse(AmountTextBox.Text, out double result))
+            {
+                MessageBox.Show("Only numeric number is supported ");
+                AmountTextBox.BackColor = Color.OrangeRed;
+            }
+                
+             
 
         }
     }
