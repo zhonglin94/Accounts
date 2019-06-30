@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Oven", "Oven", "{2F0A670C-D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oven", "Oven\Oven.csproj", "{24B65BE4-70C0-4F46-B88C-3905787CD8F3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountsLibraryTest", "AccountsLibraryTest\AccountsLibraryTest.csproj", "{2B6719C9-4757-4597-8434-927B7C78205D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{24B65BE4-70C0-4F46-B88C-3905787CD8F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24B65BE4-70C0-4F46-B88C-3905787CD8F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24B65BE4-70C0-4F46-B88C-3905787CD8F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B6719C9-4757-4597-8434-927B7C78205D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B6719C9-4757-4597-8434-927B7C78205D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B6719C9-4757-4597-8434-927B7C78205D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B6719C9-4757-4597-8434-927B7C78205D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
