@@ -14,7 +14,7 @@ Fig.2 Numerical number validation
 
 ![Image text](https://github.com/zhonglin94/Accounts/blob/master/Images/data-structure.png)
 
-Fig. 3 The defined datastructure in the text file
+Fig.3 The defined datastructure in the text file
 
 # Notes
 The AccountsItem.txt is an embedded resource which is compiled in .\Accounts\Accounts\bin\Debug\Database. 
