@@ -97,18 +97,6 @@ namespace AccountsUI
             else
                 return true;
         }
-        
-
-        //private void AmountTextBox_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
-        //    if (AmountTextBox.ValidateEmpty())
-        //        AmountTextBox.BackColor = Color.White;
-        //    if(!char.IsDigit(e.KeyChar))
-        //        MessageBox.Show("Only numeric number is supported ");
-            
-        //}
-
         private void AmountTextBox_TextChanged(object sender, EventArgs e)
         {
             if (AmountTextBox.ValidateEmpty())
@@ -157,9 +145,6 @@ namespace AccountsUI
                 MessageBox.Show("Only numeric number is supported ");
                 AmountTextBox.BackColor = Color.OrangeRed;
             }
-                
-             
-
         }
     }
 }
