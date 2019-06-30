@@ -19,7 +19,7 @@ namespace AccountsLibrary
         EUR=2
     }
 
-    public class Money
+    public struct Money
     {
         public double Value;
         public Currency Currency;
